@@ -4,6 +4,24 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
+import pymongo
+connection = pymongo.MongoClient('localhost', 27017)
+database = connection['django_db']
+collection = database['django_col']
+# collection.insert_one({"_id": 1, "name": "phyo", "age": 27, "hobby": "coding"})
+
 def home (request) :
-    # return HttpResponse("Hello World !")
-    return render(request, 'home.html', {'user': '"THAZIN"'})
+
+    try :
+        # return HttpResponse("Hello World !")
+        # return render(request, 'home.html', {'user': '"THAZIN"'})
+
+        data = collection.find_one()
+        print("******** ", data)
+
+        return render(request, 'home.html', data)
+    
+    except Exception as error :
+
+        print(error)
+        return render(request, 'home.html', {'error': error})
