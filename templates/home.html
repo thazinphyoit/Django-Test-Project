@@ -1,7 +1,26 @@
-<h1>Welcome from Dynamic Home Page !</h1>
-<!-- <h1>id -  {{id}}</h1> -->
-<h1>Name -  {{name}}</h1>
-<h1>Age - {{age}}</h1>
-<h1>Hobby -  {{hobby}}</h1>
+{% extends "container.html" %}
+{% block content %}
+        <h1>Welcome from Dynamic Home Page !</h1>
 
-<h1>{{error}}</h1>
+        <!-- <h1>id -  {{id}}</h1>
+        <h1>Name -  {{name}}</h1>
+        <h1>Age - {{age}}</h1>
+        <h1>Hobby -  {{hobby}}</h1> -->
+
+        <!-- <ul>
+                {% for key,value in data.items %}
+                        <li>{{key}} - {{value}}</li>
+                {% endfor %}
+        </ul> -->
+
+        <form action="add/" method="POST" class="box">
+                {% csrf_token %}
+                <input type="text" placeholder="Username" name="username" /><br></br>
+                <input type="text" placeholder="Email" name="email" /><br></br>
+                <input type="text" placeholder="Password" name="password" /><br></br>
+                <button type="submit">Submit</button>
+        </form>
+
+        <h1>{{error}}</h1>
+{% endblock %}
+        

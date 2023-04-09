@@ -16,12 +16,27 @@ def home (request) :
         # return HttpResponse("Hello World !")
         # return render(request, 'home.html', {'user': '"THAZIN"'})
 
-        data = collection.find_one()
-        print("******** ", data)
+        res_data = collection.find_one()
+        print("******** ", res_data)
 
-        return render(request, 'home.html', data)
+        # return render(request, 'home.html', {"id": data['_id'], "name": data['name'], 'age': data['age'], 'hobby': data['hobby']})
+        return render(request, 'home.html', {"data":res_data})
     
     except Exception as error :
 
         print(error)
         return render(request, 'home.html', {'error': error})
+
+def result (request) :
+
+    try :
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+
+        return render(request, 'result.html', {"name": username, "email": email, "password": password})
+    
+    except Exception as error :
+
+        print(error)
+        return render(request, 'result.html', {'error': error})
