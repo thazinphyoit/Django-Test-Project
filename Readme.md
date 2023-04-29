@@ -1,3 +1,12 @@
+DJANGO & MONGODB
+****************
+****************
+- create(add) data to database using separate python code
+- add form create and show form data in another page (no database using)
+- read data from database
+
+
+
 ENVIRONMENT
 ############
 
